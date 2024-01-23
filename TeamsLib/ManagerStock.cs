@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TeamsLib
 {
-    internal class ManagerStock
+    public class ManagerStock
     {
         public static Stock stock {  get; set; }
 

@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows;
 using LR10_C121_GornakDmitrii;
 using System.Linq;
+using TeamsLib;
 
 namespace Matches
 {
@@ -13,15 +14,13 @@ namespace Matches
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Stock teams;
         public MainWindow()
         {
             InitializeComponent();
-            teams = new Stock();
 
             // Привязка списка заказов к DataGrid
 
-            TeamsDataGrid.ItemsSource = teams;
+            TeamsDataGrid.ItemsSource = ManagerStock.stock;
             typematchCB.ItemsSource = new Item[]
             {
                 new Item {Name="Финал" },
@@ -123,12 +122,12 @@ namespace Matches
             var match = new Teams(teamfirst, teamsecond, dateMatch, typematch, stadion, typeStadion, resultmatchCB.Text);
 
             // Добавление матча в список
-            teams.Add(match);
-            ManagerStock.Stock.Add(match);
+            ManagerStock.stock.Add(match);
+
 
             // Обновление источника данных для DataGrid
             TeamsDataGrid.ItemsSource = null;
-            TeamsDataGrid.ItemsSource = teams;
+            TeamsDataGrid.ItemsSource = ManagerStock.stock;
 
             // Очистка полей ввода
             ClearFields();
@@ -166,12 +165,12 @@ namespace Matches
             fileDialog.OverwritePrompt = true;
 
             if (fileDialog.ShowDialog() != true) return;
-            teams.STJ(fileDialog.FileName);
+            ManagerStock.stock.STJ(fileDialog.FileName);
         }
 
         private void XMLOpen_Click(object sender, RoutedEventArgs e)
         {
-            teams.Clear();
+            ManagerStock.stock.Clear();
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.FilterIndex = 0;
             fileDialog.DefaultExt = "json";
@@ -179,9 +178,9 @@ namespace Matches
             fileDialog.Title = "Открытие JSON";
 
             if (fileDialog.ShowDialog() != true) return;
-            teams.AddRange(teams.OFJ(fileDialog.FileName));
+            ManagerStock.stock.AddRange(ManagerStock.stock.OFJ(fileDialog.FileName));
             TeamsDataGrid.ItemsSource = null;
-            TeamsDataGrid.ItemsSource = teams;
+            TeamsDataGrid.ItemsSource = ManagerStock.stock;
         }
 
         private void SearchB_Click(object sender, RoutedEventArgs e)
@@ -195,7 +194,7 @@ namespace Matches
             string searchValue = SearchCB.Text;
 
             // Произведите поиск и фильтрацию данных
-            List<Teams> filteredTeams = teams.Where(teams => teams.TypeMatch.Contains(searchValue)).ToList();
+            List<Teams> filteredTeams = ManagerStock.stock.Where(teams => teams.TypeMatch.Contains(searchValue)).ToList();
 
             // Отобразите отфильтрованные данные в DataGrid
             TeamsDataGrid.ItemsSource = filteredTeams;
@@ -204,12 +203,12 @@ namespace Matches
 
         private void Excel_Click(object sender, RoutedEventArgs e)
         {
-            teams.Excel();
+            ManagerStock.stock.Excel();
         }
 
         private void Word_Click(object sender, RoutedEventArgs e)
         {
-            teams.Word_Click();
+            ManagerStock.stock.Word_Click();
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -223,16 +222,16 @@ namespace Matches
                 MessageBoxResult select = MessageBox.Show("Вы точно хотите удалить элемент?", "Error!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (select == MessageBoxResult.Yes)
                 {
-                    teams.Remove(selectedMatch);
+                    ManagerStock.stock.Remove(selectedMatch);
                     TeamsDataGrid.ItemsSource = null; // Очистка ItemsSource
-                    TeamsDataGrid.ItemsSource = teams; // Установка списка заказов в ItemsSource
+                    TeamsDataGrid.ItemsSource = ManagerStock.stock; // Установка списка заказов в ItemsSource
                 }
             }
         }
 
         private void ViewAllProducts_Click(object sender, RoutedEventArgs e)
         {
-            TeamsDataGrid.ItemsSource = teams;
+            TeamsDataGrid.ItemsSource = ManagerStock.stock;
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
