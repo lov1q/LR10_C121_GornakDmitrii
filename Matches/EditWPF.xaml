@@ -1,0 +1,28 @@
+﻿<Window x:Class="Matches.EditWPF"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Matches"
+        mc:Ignorable="d"
+        Title="EditWPF" Height="450" Width="435">
+    <Grid>
+        <ComboBox x:Name="typematchCB" HorizontalAlignment="Left" Margin="33,229,0,0" VerticalAlignment="Top" Width="340"/>
+        <ComboBox x:Name="stadionCB" HorizontalAlignment="Left" Margin="33,276,0,0" VerticalAlignment="Top" Width="340"/>
+        <Label Content="Какой матч:" HorizontalAlignment="Left" Margin="33,0,0,0" VerticalAlignment="Center" Height="23" Width="82"/>
+        <Label Content="Стадион:" HorizontalAlignment="Left" Margin="33,251,0,0" VerticalAlignment="Top" Height="30"/>
+        <ComboBox x:Name="tipstadionCB" HorizontalAlignment="Left" Margin="33,324,0,0" VerticalAlignment="Top" Width="340"/>
+        <Label Content="Тип Стадиона:" HorizontalAlignment="Left" Margin="33,298,0,0" VerticalAlignment="Top"/>
+        <Label Content="Результат игры:" HorizontalAlignment="Left" Margin="33,346,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="resultmatchCB" HorizontalAlignment="Left" Margin="33,372,0,0" VerticalAlignment="Top" Width="340"/>
+        <TextBox x:Name="frsnameTextBox" HorizontalAlignment="Left" Margin="33,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="340"/>
+        <Label Content="Название 1 команды:" HorizontalAlignment="Left" Margin="33,54,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="secnameTextBox" HorizontalAlignment="Left" Margin="33,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="340"/>
+        <Label Content="Название 2 команды:" HorizontalAlignment="Left" Margin="33,103,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="datematchDP" HorizontalAlignment="Left" Margin="33,178,0,0" VerticalAlignment="Top" Width="300"/>
+        <Label Content="Дата матча:" HorizontalAlignment="Left" Margin="41,152,0,0" VerticalAlignment="Top"/>
+        <Label Content="Изменение данных" HorizontalAlignment="Left" Margin="33,10,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Button x:Name="editOK" Content="OK" HorizontalAlignment="Left" Margin="374,405,0,0" VerticalAlignment="Top" Width="51"/>
+        <Button x:Name="cancel" Content="Отмена" HorizontalAlignment="Left" Margin="10,405,0,0" VerticalAlignment="Top" Width="52"/>
+    </Grid>
+</Window>
