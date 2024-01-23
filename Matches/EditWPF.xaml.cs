@@ -21,38 +21,46 @@ namespace Matches
     /// </summary>
     public partial class EditWPF : Window
     {
-        public EditWPF(Teams teams, Stock stock)
+        public EditWPF(Teams team)
         {
 
             InitializeComponent();
-            typematchCB.ItemsSource = new Item[]
+            TypeMatch.ItemsSource = new Item[]
             {
                 new Item {Name="Финал" },
                 new Item {Name="Полуфинал" },
                 new Item {Name="Четверть финал" },
             };
-            stadionCB.ItemsSource = new Item[]
+            Stadion.ItemsSource = new Item[]
             {
                 new Item {Name="Камп Ноу" },
                 new Item {Name="Соккер Сити" },
                 new Item {Name="Олимпийский" },
             };
-            tipstadionCB.ItemsSource = new Item[]
+            TypeStadion.ItemsSource = new Item[]
             {
                 new Item {Name="Открытый" },
                 new Item {Name="Закрытый" },
             };
-            resultmatchCB.ItemsSource = new Item[]
+            Result.ItemsSource = new Item[]
             {
                 new Item {Name="Победа" },
                 new Item {Name="Поражение" },
                 new Item {Name="Ничья" },
             };
+            this.teams = team;
+            DataContext = teams;
         }
+        private Teams teams { get; set; }
         public class Item
         {
             public string Name { get; set; }
             public override string ToString() => $"{Name}";
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

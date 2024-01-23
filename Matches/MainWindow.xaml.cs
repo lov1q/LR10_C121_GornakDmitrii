@@ -77,11 +77,21 @@ namespace Matches
                 MessageBox.Show("Введите название 1 команды!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            if (frsnameTextBox.Text.Length < 5)
+            {
+                MessageBox.Show("Название команды должно быть длинее 5 символов!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             string teamsecond = secnameTextBox.Text;
 
             if (string.IsNullOrWhiteSpace(secnameTextBox.Text))
             {
                 MessageBox.Show("Введите название 2 команды!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (secnameTextBox.Text.Length < 5)
+            {
+                MessageBox.Show("Название команды должно быть длинее 5 символов!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -236,7 +246,12 @@ namespace Matches
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            
+            var edit = TeamsDataGrid.SelectedItem as Teams;
+            if (edit != null)
+            {
+                EditWPF ed = new EditWPF(edit);
+                ed.Show();
+            }
         }
     }
 }

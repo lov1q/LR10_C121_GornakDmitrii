@@ -13,6 +13,7 @@ namespace LR10_C121_GornakDmitrii
 
         public int TeamfirstPoints { get; set; }
         public int TeamsecondPoints { get; set; }
+        public string Result { get; set; }
 
         public Teams() { }
 
@@ -39,6 +40,7 @@ namespace LR10_C121_GornakDmitrii
                 TeamfirstPoints = 1;
                 TeamsecondPoints = 1;
             }
+            Result = proverka;
         }
     }
 }

@@ -38,5 +38,19 @@ namespace UnitTestProject1
             Assert.AreEqual(teams.TeamfirstPoints, 1);
             Assert.AreEqual(teams.TeamsecondPoints, 1);
         }
+        public void LenghtFirstName()
+        {
+            // Arrange
+            var teams = new Teams("Первая команда", "Вторая команда", DateTime.Parse("2005.04.12"), "Полуфинал", "Камп Ноу", "Открытый", "Ничья");
+
+            Assert.AreEqual(teams.Teamfirst, "Мимимишки");
+        }
+        public void LenghtSecondName()
+        {
+            // Arrange
+            var teams = new Teams("Первая команда", "Вторая команда", DateTime.Parse("2005.04.12"), "Полуфинал", "Камп Ноу", "Открытый", "Ничья");
+
+            Assert.AreEqual(teams.Teamsecond, "Смешарики");
+        }
     }
 }
